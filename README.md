@@ -1,4 +1,4 @@
-# realworld-axum-sqlx
+# axum-sqlx
 A Rust implementation of the [Realworld] demo app spec showcasing the use of the [Axum] web framework and [SQLx]
 SQL database client, with [PostgreSQL] as the database backend.
 
@@ -71,8 +71,8 @@ Comments on the module definitions will guide you from there.
 ### Clone this Repository
 
 ```shell
-$ git clone https://github.com/launchbadge/realworld-axum-sqlx
-$ cd realworld-axum-sqlx
+$ git clone https://github.com/launchbadge/axum-sqlx
+$ cd axum-sqlx
 ```
 
 ### Installing Rust and Cargo
