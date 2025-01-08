@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  axum-sqlx:
+    build: .
+    volumes:
+      - .:/usr/src/axum-sqlx
+      - /usr/src/axum-sqlx/target
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    command: cargo watch -x run
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: thanhnha
+      POSTGRES_DB: realworld_axum_sqlx
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

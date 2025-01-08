@@ -15,6 +15,8 @@ use axum_sqlx::http;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
+    print!("----Testing----");
+
     // This returns an error if the `.env` file doesn't exist, but that's not what we want
     // since we're not going to use a `.env` file if we deploy this application.
     dotenv::dotenv().ok();
@@ -40,9 +42,14 @@ async fn main() -> anyhow::Result<()> {
         .await
         .context("could not connect to database_url")?;
 
+    print!("----Testing----");
+    print!("{}", config.database_url);
+
     // This embeds database migrations in the application binary so we can ensure the database
     // is migrated correctly on startup
     sqlx::migrate!().run(&db).await?;
+
+    print!("----Testing----");
 
     // Finally, we spin up our API.
     http::serve(config, db).await;

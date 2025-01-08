@@ -83,6 +83,8 @@ async fn get_article_comments(
     state: State<ApiContext>,
     Path(slug): Path<String>,
 ) -> Result<Json<MultipleCommentsBody>, Error> {
+    print!("----Testing----");
+    
     // With this, we can return 404 if the article slug was not found.
     let article_id = sqlx::query_scalar!("select article_id from article where slug = $1", slug)
         .fetch_optional(&state.db)
